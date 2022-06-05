@@ -1,0 +1,29 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:8.0.29
+    volumes:
+      - /opt/test:/var/lib/mysql
+      - ./back/db:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: ***********
+      MYSQL_DATABASE: alimentacion
+      MYSQL_USER: sic
+      MYSQL_PASSWORD: ***********
+    ports:
+      - "3306:3306"
+  backend:
+    depends_on:
+      - db
+    image: tomcat:9.0
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./back/app/target/app.war:/usr/local/tomcat/webapps/app.war
+  web:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes: 
+      - ./front:/usr/share/nginx/html
+
