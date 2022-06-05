@@ -20,25 +20,25 @@ Para instalar Docker Compose vamos a descargar el binario desde su [repositorio 
 
 Con el siguiente comando descargaremos la version `1.29.2`y guardaremos el ejecutable en `/usr/local/bin/docker-compose`, que sera accesible con el comando `docker-compose`:
 
-```console
+```
 $ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
 Acto seguido vamos a conceder los permisos de ejecución: 
 
-```console
+```
 $ sudo chmod +x /usr/local/bin/docker-compose
 ```
 
 Para verificar la instalación vamos a ejecutar:
 
-```console
+```
 $ docker-compose --version
 ```
 
 Y deberíamos obtener un resultado similar al siguiente: 
 
-```console
+```
 docker-compose version 1.29.2, build 5becea4c
 ```
 
@@ -100,7 +100,7 @@ services:
 
 Para arrancar todos los contenedores vamos a usar el comando:
 
-```console
+```
 docker-compose up -d
 ```
 
@@ -108,7 +108,7 @@ Este comando buscara por defecto el archivo `docker-compose.yml` en el mismo dir
 
 Si quisiéramos detener los contenedores usariamos del mismo modo el comando:
 
-```console
+```
 docker-compose down
 ```
 
@@ -117,38 +117,38 @@ docker-compose down
 Para poder subir nuestras imágenes a [Docker Hub](https://hub.docker.com/) debemos tener un usuario registrado y hacer login desde nuestra terminal.  
 Esto se consigue mediante el comando: 
 
-```console
+```
 docker login
 ```
 
-Si es la primera vez nos pedirá nuestras credenciales de Docker Hub; nombre de usuario y contraseña.
+Si es la primera vez, nos pedirá nuestras credenciales de Docker Hub; nombre de usuario y contraseña.
 Si el resultado es satisfactorio nos informará mediante el output:
 
-```console
+```
 Login Succeeded
 ```
 
 A continuación, vamos a listar las imágenes de las que disponemos localmente usando el comando:
 
-```console
+```
 docker images
 ```
 
 De las imágenes que tenemos vamos a seleccionar las que queremos subir al repositorio remoto y les vamos a asignar una etiqueta (con el comando `docker tag`) conteniendo `nombre_de_usuario/nombre_imagen`. Por ejemplo, en nuestro caso:
 
-```console
+```
 docker tag tomcat:9.0 josepcastellcolom/sic.tomcat
 ```
 
 Así con cada una de las imágenes que deseamos subir y, a continuación, usaremos el comando `docker push`, seguido de del nombre que le hemos dado, de la siguiente forma:
 
-```console
+```
 docker push josepcastellcolom/sic.tomcat
 ```
 
 Ésto iniciará un proceso de subida de la imágen y nos mostrará una salida de consola similar a la siguiente:
 
-```console
+```
 Using default tag: latest
 The push refers to repository [docker.io/josepcastellcolom/sic.tomcat]
 3d9d2f8c01ed: Mounted from library/tomcat 
@@ -168,7 +168,7 @@ En éste momento, si accedemos a nuestro perfil de [Docker Hub](https://hub.dock
 
 Si queremos descargar estas imágenes en otro equipo o compartirlas con alguien, es suficiente utilizar el comando que aparece en la imagen de nuestro repositorio, por ejemplo:
 
-```console
+```
 docker pull josepcastellcolom/sic.tomcat
 ```
 
@@ -178,13 +178,13 @@ docker pull josepcastellcolom/sic.tomcat
 https://hub.docker.com/u/josepcastellcolom
 
 2. Comandos de descarga de las tres imágenes:  
-    ```console
+    ```
     docker pull josepcastellcolom/sic.tomcat
     ```
-    ```console
+    ```
     docker pull josepcastellcolom/sic.mysql
     ```
-    ```console
+    ```
     docker pull josepcastellcolom/sic.nginx
     ```
 
